@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+
+
+namespace OPR2_3
+{
+    internal class Program
+    {
+        static int Func(int a, int b)
+        {
+            Random random = new Random();
+            return random.Next(a, b);
+        }
+
+        static void Main(string[] args)
+        {
+            Console.Write("Введите a: ");
+            int a = int.Parse(Console.ReadLine());
+            Console.Write("Введите b: ");
+            int b = int.Parse(Console.ReadLine());
+            int number;
+
+            for (int i = 1; i < 101; i++)
+            {
+                number = Func(a, b);
+                Console.WriteLine($"{i}-е число: {number};");
+                Thread.Sleep(1);
+            }
+        }
+    }
+}
