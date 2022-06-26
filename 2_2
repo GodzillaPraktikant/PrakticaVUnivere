@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OPR2_5
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            DateTime date;
+            DateTime date1;
+            Console.Write("Введите год - ");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Санитарные дни:");
+            try
+            { 
+                date = new DateTime(n,1,1);
+                date1 = new DateTime(n, date.Month, date.Day);
+                while (n == date.Year)
+                {
+                    date1 = date1.AddDays(6);
+                    if (date.DayOfWeek == DayOfWeek.Thursday && (date1.Month != date.Month || (date.Day == 24 && DateTime.DaysInMonth(n, date.Month) != 31) || date.Day == 25))
+                    {
+                        Console.WriteLine(date.ToLongDateString());
+                    }
+                    date = date.AddDays(1);
+                    date1 = new DateTime(n, date.Month, date.Day);
+
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Такого года не существует!");
+            }
+        }
+    }
+}
